@@ -1,0 +1,56 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: f0ff1ca232469d201ed9f2a83fc26c94bfa25a4d230b1ef410679d5023c03e37
+
+name:           aoc-y2020
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/aoc-y2020#readme>
+homepage:       https://github.com/nilsalex/aoc-y2020#readme
+bug-reports:    https://github.com/nilsalex/aoc-y2020/issues
+author:         Nils Alex
+maintainer:     Nils Alex
+copyright:      2020 Nils Alex
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/nilsalex/aoc-y2020
+
+library
+  exposed-modules:
+      A01
+      A02
+      A03
+      A04
+      A05
+  other-modules:
+      Paths_aoc_y2020
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , parsec
+  default-language: Haskell2010
+
+executable aoc-y2020
+  main-is: Main.hs
+  other-modules:
+      Paths_aoc_y2020
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aoc-y2020
+    , base >=4.7 && <5
+    , containers
+    , parsec
+  default-language: Haskell2010
