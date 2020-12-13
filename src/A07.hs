@@ -8,10 +8,12 @@ module A07
   , result_2
   ) where
 
-import qualified Data.Set               as S
-import qualified Data.Map               as M
-import qualified Data.IntMap            as I
-import qualified Text.Parsec            as P
+import qualified Data.Set                 as S
+import qualified Data.Map                 as M
+import qualified Data.IntMap              as I
+import qualified Text.Parsec              as P
+import           Data.Bifunctor ( bimap
+                                , second)
 import           Data.List   ( sort
                              , nub
                              , foldl' )
@@ -64,7 +66,9 @@ vertices :: Ord a => Graph a -> [a]
 vertices = nub . sort . concatMap (\(a,b) -> [a,b]) . S.elems
 
 relabel :: Ord a => M.Map a Int -> Graph a -> Graph Int
-relabel replaceMap = S.map (\(a,b) -> (replaceMap M.! a, replaceMap M.! b))
+relabel replaceMap = S.map (bimap f f)
+  where
+    f = (replaceMap M.!)
 
 removeNumbers :: (a,[(b,c)]) -> (a,[c])
 removeNumbers (x,ys) = (x, fmap snd ys)
@@ -115,7 +119,7 @@ part_2 statements = reduce t
     shinyGold  = relabelMap M.! "shiny gold"
     g          = I.fromList $
                  fmap (\(a,bs) -> ( relabelMap M.! a
-                                  , sort $ fmap (\(w,b) -> (w, relabelMap M.! b)) bs
+                                  , sort $ fmap (second (relabelMap M.!)) bs
                                   )) statements
     t          = Node 1 $ unfoldFromGraph' g shinyGold
 
