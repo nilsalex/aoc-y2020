@@ -8,6 +8,7 @@ import qualified A05
 import qualified A06
 import qualified A07
 import qualified A08
+import qualified A09
 
 main :: IO ()
 main = do
@@ -35,3 +36,6 @@ main = do
   putStrLn "\nDay 8"
   print =<< A08.result_1
   print =<< A08.result_2
+  putStrLn "\nDay 9"
+  print =<< A09.result_1
+  print =<< A09.result_2
