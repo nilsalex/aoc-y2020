@@ -12,6 +12,7 @@ import qualified A09
 import qualified A10
 import qualified A11
 import qualified A12
+import qualified A13
 
 main :: IO ()
 main = do
@@ -51,3 +52,6 @@ main = do
   putStrLn "\nDay 12"
   print =<< A12.result_1
   print =<< A12.result_2
+  putStrLn "\nDay 13"
+  print =<< A13.result_1
+  print =<< A13.result_2
